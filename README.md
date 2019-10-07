@@ -6,3 +6,5 @@ This is a firet person game in which a collaborative task is designed for three 
 * screw driver - fix the screw to the plank
 * glue - fix thep plank
 * saw - cut the plank 
+## Tasks
+* first person controller @pan
