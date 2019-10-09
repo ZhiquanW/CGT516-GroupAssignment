@@ -1,4 +1,4 @@
-# CGT526-GroupAssignment02
+# CGT516-GroupAssignment02
 ---
 ## Description:
 This is a first person game in which a collaborative task is designed for three players. They need to assembly a wooden bed with different type of tools and methods. The game use network connection to bring the players to the scene.
