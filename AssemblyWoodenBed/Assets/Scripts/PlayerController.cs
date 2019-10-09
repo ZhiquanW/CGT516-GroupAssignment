@@ -2,37 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
-    public Camera eyeCamera;
-    public float cameraRotateSpeed;
+public class PlayerController : MonoBehaviour
+{
+    public float speed = 6.0f;
+    public float gravity = 9.8f;
 
-    public float moveSpeed;
-    private Rigidbody _rigidbody;
-
-    public GameObject handObj;
+    private CharacterController controller;
+    private CameraLook camlook = new CameraLook();
+    private Camera cam;
 
     public Color touchColor;
-    // Start is called before the first frame update
-    void Start() {
-        _rigidbody = this.GetComponent<Rigidbody>();
+    // Use this for initialization
+    void Start()
+    {
+        cam = Camera.main;
+        controller = gameObject.GetComponent<CharacterController>();
+        camlook.Init(transform, cam.transform);
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        camlook.LookRotation(transform, cam.transform);
+        //Move
+        float theta = transform.rotation.eulerAngles.y * Mathf.Deg2Rad;
+        float ver = Input.GetAxis("Vertical");
+        float hor = Input.GetAxis("Horizontal");
 
-        //Rotate Camera & Body
-        float rotateXSpeed = Input.GetAxis("Mouse X") * cameraRotateSpeed ;
-        float rotateYSpeed = Input.GetAxis("Mouse Y") * cameraRotateSpeed ;
-        eyeCamera.transform.localRotation *= Quaternion.Euler(-rotateYSpeed, 0, 0);
-        transform.localRotation*= Quaternion.Euler(0, rotateXSpeed, 0);
-        //Control movement
-        float verticalInput = Input.GetAxis("Vertical");
-        float horizontalInput = Input.GetAxis("Horizontal");
-        _rigidbody.velocity = moveSpeed * (this.transform.forward*verticalInput + transform.right*horizontalInput);
-        _rigidbody.angularVelocity = new Vector3();
-        
-        
+        Vector3 Dir = new Vector3(hor * Mathf.Cos(theta) + ver * Mathf.Sin(theta), -gravity * Time.fixedDeltaTime, -hor * Mathf.Sin(theta)
+            + ver * Mathf.Cos(theta));
+        controller.Move(Dir * speed * Time.fixedDeltaTime);
+        camlook.UpdateCursorLock();
     }
-    
+
+
 }
