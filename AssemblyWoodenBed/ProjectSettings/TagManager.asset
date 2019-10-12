@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Key
+  - Cube
+  - Glue
+  - Axe
+  - Plank
+  - Board
+  - Offset
   layers:
   - Default
   - TransparentFX
@@ -14,7 +21,7 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
+  - CanPickUp
   - 
   - 
   - 
