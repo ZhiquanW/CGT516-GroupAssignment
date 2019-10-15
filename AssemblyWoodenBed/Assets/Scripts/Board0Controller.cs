@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.UIElements.GraphView;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Board0Controller : MonoBehaviour {
 	public GameObject[] boards;
