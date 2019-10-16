@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.UIElements.GraphView;
+﻿using Photon.Pun;
 using UnityEngine;
 
 public class Board0Controller : MonoBehaviour {
@@ -19,11 +16,27 @@ public class Board0Controller : MonoBehaviour {
 	}
 
 	public void DropBoard() {
-		boards[index++].AddComponent<Rigidbody>();
+		if (index < boards.Length - 2) {
+			boards[index].transform.parent = null;
+			boards[index].AddComponent<Rigidbody>();
+			boards[index].AddComponent<PhotonRigidbodyView>();
+			boards[index++].AddComponent<BoxCollider>();
+		}
+		else {
+			boards[index].transform.parent = null;
+			boards[index].AddComponent<Rigidbody>();
+			boards[index].AddComponent<PhotonRigidbodyView>();
+			boards[index++].AddComponent<BoxCollider>();
+			boards[index].transform.parent = null;
+			boards[index].AddComponent<Rigidbody>();
+			boards[index].AddComponent<PhotonRigidbodyView>();
+			boards[index++].AddComponent<BoxCollider>();
+			Destroy(this.gameObject);
+		}
 	}
 
 	private void OnCollisionEnter(Collision other) {
-		if (other.gameObject.name == "Axe") {
+		if (other.gameObject.name == "Axe"&&index < 3) {
 			DropBoard();
 		}
 			

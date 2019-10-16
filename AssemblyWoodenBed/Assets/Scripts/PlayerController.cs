@@ -1,31 +1,43 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviourPun
 {
     public float speed = 6.0f;
     public float gravity = 9.8f;
 
 
-
+    private HandController hand;
     private CharacterController controller;
     private CameraLook camlook = new CameraLook();
     private Camera cam;
 
-
+    private void Awake()
+    {
+        if (!photonView.IsMine)
+        {
+            
+            Destroy(GetComponentInChildren<Camera>());
+            //Destroy(GetComponentInChildren<HandController>());
+        }
+    }
     // Use this for initialization
     void Start()
     {
         cam = Camera.main;
         controller = gameObject.GetComponent<CharacterController>();
         camlook.Init(transform, cam.transform);
-
+        hand = GetComponentInChildren<HandController>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!photonView.IsMine)
+            return;
         camlook.LookRotation(transform, cam.transform);
         //Move
         float theta = transform.rotation.eulerAngles.y * Mathf.Deg2Rad;
@@ -48,5 +60,18 @@ public class PlayerController : MonoBehaviour
         camlook.UpdateCursorLock();
     }
 
+    public static void RefreshInstance(ref PlayerController player, PlayerController prefab)
+    {
+        var position = Vector3.zero;
+        var rotation = Quaternion.identity;
+        if(player != null)
+        {
+            position = player.transform.position;
+            rotation = player.transform.rotation;
+            PhotonNetwork.Destroy(player.gameObject);
+        }
+        player = PhotonNetwork.Instantiate(prefab.gameObject.name, position, rotation).GetComponent<PlayerController>();
+    }
 
+    
 }
