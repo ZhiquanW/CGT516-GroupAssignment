@@ -30,10 +30,10 @@ public class NetWorkManager : MonoBehaviourPunCallbacks {
 
     public void OnClickConnectToMaster()
     {
-        PhotonNetwork.OfflineMode = false;
+        /*PhotonNetwork.OfflineMode = false;
         PhotonNetwork.NickName = "PlayerName";
-        //PhotonNetwork.AutomaticallySyncScene = true;
-        PhotonNetwork.GameVersion = "v1";
+        PhotonNetwork.AutomaticallySyncScene = true;
+        PhotonNetwork.GameVersion = "v1";*/
 
         triesToConnectToMaster = true;
         PhotonNetwork.ConnectUsingSettings();

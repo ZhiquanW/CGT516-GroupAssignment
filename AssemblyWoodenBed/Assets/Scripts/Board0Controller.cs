@@ -27,6 +27,7 @@ public class Board0Controller : MonoBehaviour {
 			boards[index].AddComponent<Rigidbody>();
 			boards[index].AddComponent<PhotonRigidbodyView>();
 			boards[index++].AddComponent<BoxCollider>();
+
 			boards[index].transform.parent = null;
 			boards[index].AddComponent<Rigidbody>();
 			boards[index].AddComponent<PhotonRigidbodyView>();

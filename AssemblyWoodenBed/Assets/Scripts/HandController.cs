@@ -60,6 +60,9 @@ public class HandController : MonoBehaviourPun , IPunObservable{
             case "Axe":
                 //Chop the wood
                 break;
+            case "Spray":
+                //Change the color
+                break;
             default:
                 break;
         }
@@ -109,13 +112,6 @@ public class HandController : MonoBehaviourPun , IPunObservable{
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (stream.IsWriting)
-        {
-            
-        }
-        else
-        {
-
-        }
+        
     }
 }

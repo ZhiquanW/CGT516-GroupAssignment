@@ -11,6 +11,7 @@ TagManager:
   - Plank
   - Board
   - Offset
+  - Spray
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - 
   - PostProcessing
   - CanPickUp
-  - 
+  - CanSpray
   - 
   - 
   - 
