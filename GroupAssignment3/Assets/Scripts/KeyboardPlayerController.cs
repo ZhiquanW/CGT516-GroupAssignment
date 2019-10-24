@@ -103,12 +103,16 @@ public class KeyboardPlayerController : MonoBehaviour {
 			if (Input.GetKey(KeyCode.K)) {
 				if (0 <= modeID && modeID <= 2) {
 					targetFurniture.GetComponent<Furnitures>().Scale(PlayerID, modeID, manipulateStep);
+				}else if (modeID == 3) {
+					targetFurniture.GetComponent<Furnitures>().ChangeColor(PlayerID, manipulateStep);
 				}
 			}
 
 			if (Input.GetKey(KeyCode.L)) {
 				if (0 <= modeID && modeID <= 2) {
 					targetFurniture.GetComponent<Furnitures>().Scale(PlayerID, modeID, -manipulateStep);
+				}else if (modeID == 3) {
+					targetFurniture.GetComponent<Furnitures>().ChangeColor(PlayerID, -manipulateStep);
 				}
 			}
 		}
