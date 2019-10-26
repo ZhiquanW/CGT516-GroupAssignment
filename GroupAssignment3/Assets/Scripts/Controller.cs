@@ -5,11 +5,11 @@ using UnityEngine;
 namespace GA3 {
     public class Controller : MonoBehaviour {
 
-        protected enum Mode
+        public enum Mode
         {
-            Move, Rotate, Resize
+            Move, ScaleX, ScaleY, ScaleZ, Color
         }
-        protected Mode mode;
+        public Mode mode;
         public GameObject furniture;
 	    // Use this for initialization
 	    void Start () {
