@@ -25,6 +25,7 @@
           <e p="Furnitures.cs" t="Include" />
           <e p="KeyboardPlayerController.cs" t="Include" />
           <e p="MouseController.cs" t="Include" />
+          <e p="UIManager.cs" t="Include" />
         </e>
       </e>
       <e p="GroupAssignment3.sln" t="IncludeFlat" />

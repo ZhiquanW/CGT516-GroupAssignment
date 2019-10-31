@@ -84,7 +84,7 @@ namespace GA3
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity,groundLayer))
             { 
-                furniture.transform.position = hit.point ;
+                furniture.GetComponent<Furnitures>().MoveObject(2,hit.point);
                 
             }
         }

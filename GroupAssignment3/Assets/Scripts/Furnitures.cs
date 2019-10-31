@@ -10,7 +10,7 @@ namespace GA3 {
         public int[] lockScale = new int[3]{-1,-1,-1};
         public Vector2 scaleRange = new Vector2(0.2f,2);
         public int lockColor = -1;
-
+        public int lockmove = -1;
         public List<Color> colors;
         public float colorRatio = 0;
         public Color targetColor;
@@ -29,6 +29,8 @@ namespace GA3 {
             for (int i = 0; i < 3; ++i) {
                 lockScale[i] = -1;
             }
+
+            lockmove = -1;
         }
 
         // Update is called once per frame
@@ -59,7 +61,8 @@ namespace GA3 {
             //release color color locker
             if (lockColor == playerId) {
                 lockColor = -1;
-            }
+            }    
+            lockmove = -1;
         }
 
         public void ChangeColor(int playerID,float ratio) {
@@ -73,7 +76,12 @@ namespace GA3 {
                 }
             }
         }
-
+        public void MoveObject(int playerID,Vector3 pos) {
+            if (lockmove == -1 || lockmove == playerID) {
+                lockmove = playerID;
+                this.transform.position = pos;
+            }
+        }
 
         private void OnMouseDown() {
             if (MouseController.instance.furniture == null) {
