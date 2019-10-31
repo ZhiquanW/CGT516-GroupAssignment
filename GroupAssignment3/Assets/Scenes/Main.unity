@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 58018824}
   - component: {fileID: 58018823}
   m_Layer: 5
-  m_Name: KeyboardTxt (1)
+  m_Name: KeyboardTxt0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'MouseMode:'
+  m_Text: 'KeyboardPlayer0Mode:'
 --- !u!222 &58018824
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -727,6 +727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 0
   furniture: {fileID: 0}
+  prefab: {fileID: 100004, guid: 89131f46d6bfc864699138153a2cc996, type: 2}
   scrollSpeed: 10
 --- !u!4 &375305992
 Transform:
@@ -1442,10 +1443,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84370d377c2ebb345b57ab972272ddf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mode: 0
+  furniture: {fileID: 0}
+  prefab: {fileID: 100004, guid: 89131f46d6bfc864699138153a2cc996, type: 2}
   PlayerID: 0
   moveSpeed: 2
   modeID: 0
-  modeNum: 4
+  modetype: 
+  mode_keyboard: 0
+  modeNum: 8
   manipulateStep: 0.02
   targetFurniture: {fileID: 0}
 --- !u!65 &1082114358
@@ -1617,8 +1623,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Mouse: {fileID: 481270169}
-  Key1: {fileID: 58018823}
-  Key2: {fileID: 1707568263}
+  Key0: {fileID: 58018823}
+  Key1: {fileID: 1707568263}
+  KeyboardPlayer0: {fileID: 1082114357}
+  KeyboardPlayer1: {fileID: 1999885438}
 --- !u!114 &1149772015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2147,7 +2155,7 @@ GameObject:
   - component: {fileID: 1707568264}
   - component: {fileID: 1707568263}
   m_Layer: 5
-  m_Name: KeyboardTxt (2)
+  m_Name: KeyboardTxt1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2203,7 +2211,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'MouseMode:'
+  m_Text: 'KeyboardPlayer1Mode:'
 --- !u!222 &1707568264
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2296,10 +2304,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84370d377c2ebb345b57ab972272ddf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mode: 0
+  furniture: {fileID: 0}
+  prefab: {fileID: 100004, guid: 89131f46d6bfc864699138153a2cc996, type: 2}
   PlayerID: 1
   moveSpeed: 2
   modeID: 0
-  modeNum: 4
+  modetype: 
+  mode_keyboard: 0
+  modeNum: 8
   manipulateStep: 0.02
   targetFurniture: {fileID: 0}
 --- !u!65 &1999885439

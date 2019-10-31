@@ -74,6 +74,7 @@ namespace GA3 {
             }
         }
 
+
         private void OnMouseDown() {
             if (MouseController.instance.furniture == null) {
                 MouseController.instance.furniture = gameObject;

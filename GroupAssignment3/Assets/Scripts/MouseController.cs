@@ -27,7 +27,7 @@ namespace GA3
                 return;
             if (Input.GetMouseButtonDown(1))
             {
-                if (mode == Mode.Color)
+                if (mode == Mode.Substitute)
                     mode = 0;
                 else
                     mode++;
@@ -51,6 +51,21 @@ namespace GA3
                 case Mode.Color:
                     furniture.GetComponent<Furnitures>().ChangeColor(2, Input.GetAxis("Mouse ScrollWheel") * scrollSpeed);
                     break;
+
+
+                case Mode.Add:
+                    Vector3 selectedpoint = GetTargetPos();
+                    Add(selectedpoint);
+                    break;
+
+                case Mode.Remove:
+                    Remove(furniture);
+                    break;
+
+                case Mode.Substitute:
+                    Substitute(furniture);
+                    break;
+
                 default:
                     break;
             }
@@ -62,6 +77,7 @@ namespace GA3
 
             offset = furniture.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
         }*/
+
         protected override void Move()
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -71,6 +87,44 @@ namespace GA3
                 furniture.transform.position = hit.point ;
                 
             }
+        }
+
+        protected override void Add(Vector3 pos)
+        {
+
+            if (Input.GetMouseButtonDown(2))
+            {
+                base.Add(pos);
+            }
+
+        }
+        protected override void Remove(GameObject targetobject)
+        {
+            if (Input.GetMouseButtonDown(2))
+            {
+                base.Remove(targetobject);
+            }
+
+        }
+        protected override void Substitute(GameObject targetobject)
+        {
+            if (Input.GetMouseButtonDown(2))
+            {
+                base.Add(targetobject.transform.position);
+                base.Remove(targetobject);
+            }
+
+        }
+        protected override Vector3 GetTargetPos()
+        {
+            Vector3 targetpos = new Vector3();
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer))
+            {
+                targetpos = hit.point;
+            }
+            return targetpos;
         }
     }
 }

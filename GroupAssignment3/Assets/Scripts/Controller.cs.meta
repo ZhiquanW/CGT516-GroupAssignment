@@ -3,7 +3,9 @@ guid: b29473461aade5844867c02b2ca0941f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - furniture: {instanceID: 0}
+  - prefab: {fileID: 100004, guid: 89131f46d6bfc864699138153a2cc996, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
